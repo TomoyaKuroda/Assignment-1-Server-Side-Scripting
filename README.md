@@ -1,1 +1,1 @@
-<p.This website stores information about questions.</p>
+<p>This website stores information about questions.</p>
