@@ -20,8 +20,8 @@ namespace Assignment1.Models
         [Required]
         [StringLength(1000)]
         public string contents_of_question { get; set; }
-
-        public DateTime date { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? date { get; set; }
 
         public int questioner_id { get; set; }
 
