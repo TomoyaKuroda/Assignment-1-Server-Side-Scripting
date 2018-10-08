@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Assignment1.Models.questioner>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Questioners";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-<h3>@Html.ActionLink("Go to question page", "Index", "questions")</h3>
+<h2>Questioners</h2>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -22,7 +22,7 @@
             @Html.DisplayNameFor(model => model.phone_number)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.email_addres)
+            @Html.DisplayNameFor(model => model.email_address)
         </th>
         <th></th>
     </tr>
@@ -39,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.phone_number)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.email_addres)
+            @Html.DisplayFor(modelItem => item.email_address)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.questioner_id }) |

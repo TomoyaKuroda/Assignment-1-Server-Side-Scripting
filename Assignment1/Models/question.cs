@@ -10,17 +10,21 @@ namespace Assignment1.Models
     public partial class question
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Question ID")]
         public int question_id { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Title")]
         public string title { get; set; }
 
         [Required]
-        [StringLength(1000)]
+        [StringLength(50)]
+        [Display(Name = "Contents of Question")]
         public string contents_of_question { get; set; }
+
         [Column(TypeName = "date")]
+        [Display(Name = "Deadline")]
         public DateTime? date { get; set; }
 
         public int questioner_id { get; set; }

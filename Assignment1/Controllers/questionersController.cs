@@ -46,7 +46,7 @@ namespace Assignment1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "questioner_id,first_name,last_name,phone_number,email_addres")] questioner questioner)
+        public ActionResult Create([Bind(Include = "questioner_id,first_name,last_name,phone_number,email_address")] questioner questioner)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Assignment1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "questioner_id,first_name,last_name,phone_number,email_addres")] questioner questioner)
+        public ActionResult Edit([Bind(Include = "questioner_id,first_name,last_name,phone_number,email_address")] questioner questioner)
         {
             if (ModelState.IsValid)
             {

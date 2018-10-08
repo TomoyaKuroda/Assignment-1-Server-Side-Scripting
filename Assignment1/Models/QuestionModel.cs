@@ -38,7 +38,7 @@ namespace Assignment1.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<questioner>()
-                .Property(e => e.email_addres)
+                .Property(e => e.email_address)
                 .IsUnicode(false);
 
             modelBuilder.Entity<questioner>()

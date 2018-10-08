@@ -1,9 +1,14 @@
 ﻿@{
     ViewBag.Title = "Question Database";
 }
-
+<style>
+    /*change the background image*/
+    .jumbotron{
+        background-image:url("../../Content/hubblepaints.jpg");
+    }
+</style>
 <div class="jumbotron">
-    <h1>Question Database</h1>
+    <img src="~/Content/cooltext301299826491211.png" alt="top image" />
     <p class="lead">This website stores information about questions and questioners.</p>
 </div>
 
@@ -21,3 +26,4 @@
         <p class="btn btn-info">@Html.ActionLink("Go to questioner page", "Index", "questioners") &raquo;</p>
     </div>
 </div>
+

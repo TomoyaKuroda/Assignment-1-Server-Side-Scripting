@@ -218,6 +218,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cooltext301299826491211.png" />
+    <Content Include="Content\hubblepaints.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -275,16 +277,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\questions\Create.cshtml" />
-    <Content Include="Views\questions\Delete.cshtml" />
-    <Content Include="Views\questions\Details.cshtml" />
-    <Content Include="Views\questions\Edit.cshtml" />
-    <Content Include="Views\questions\Index.cshtml" />
     <Content Include="Views\questioners\Create.cshtml" />
     <Content Include="Views\questioners\Delete.cshtml" />
     <Content Include="Views\questioners\Details.cshtml" />
     <Content Include="Views\questioners\Edit.cshtml" />
     <Content Include="Views\questioners\Index.cshtml" />
+    <Content Include="Views\questions\Create.cshtml" />
+    <Content Include="Views\questions\Delete.cshtml" />
+    <Content Include="Views\questions\Details.cshtml" />
+    <Content Include="Views\questions\Edit.cshtml" />
+    <Content Include="Views\questions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
