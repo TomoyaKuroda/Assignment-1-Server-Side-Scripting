@@ -3,8 +3,10 @@
 }
 <style>
     /*change the background image*/
-    .jumbotron{
-        background-image:url("../../Content/hubblepaints.jpg");
+    .jumbotron {
+        background-image: url("../../Content/Database-Security.jpg");
+        background-size: cover;
+        color:white;
     }
 </style>
 <div class="jumbotron">
@@ -14,16 +16,19 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h2>Getting question information</h2>
+        <img src="~/Content/eight-teen-questions.jpg" alt="question image" style="width: 100%;
+	height: 250px;"/>
+        <h2 style="text-align: center;">@Html.ActionLink("Question page", "Index", "questions")</h2>
         <p>
-            This shows useful information. You may find interesting questions.
+            You may find interesting questions.
         </p>
-        <p class="btn btn-info">@Html.ActionLink("Go to question page", "Index", "questions") &raquo;</p>
+
     </div>
     <div class="col-md-6">
-        <h2>Getting questioners information</h2>
-        <p>Don't abuse this information.</p>
-        <p class="btn btn-info">@Html.ActionLink("Go to questioner page", "Index", "questioners") &raquo;</p>
+        <img src="~/Content/mcupload_57dfd3eaa1ec5.jpg" alt="questioner image" style="width: 100%;
+	height: 250px;" />
+        <h2 style="text-align: center;">@Html.ActionLink("Questioner page", "Index", "questioners")</h2>
+        <p>This page shows questioner's first name, last name, email address, and phone number.</p>
     </div>
 </div>
 
