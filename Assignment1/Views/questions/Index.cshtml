@@ -8,8 +8,11 @@
 <h2>Questions</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+    </p>
 <table class="table">
     <tr>
         <th>
@@ -42,10 +45,18 @@
             @Html.DisplayFor(modelItem => item.date)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.question_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.question_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.question_id })
-        </td>
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.question_id })
+                <span>|</span>
+            }
+            @Html.ActionLink("Details", "Details", new { id = item.question_id }) 
+            @if (Request.IsAuthenticated)
+            {
+                <span>|</span>
+                @Html.ActionLink("Delete", "Delete", new { id = item.question_id })
+            }
+            </td>
     </tr>
 }
 

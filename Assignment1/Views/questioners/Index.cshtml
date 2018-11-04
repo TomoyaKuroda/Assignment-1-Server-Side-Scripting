@@ -42,9 +42,16 @@
             @Html.DisplayFor(modelItem => item.email_address)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.questioner_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.questioner_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.questioner_id })
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.questioner_id })
+                <span>|</span>
+            }
+            @Html.ActionLink("Details", "Details", new { id = item.questioner_id })
+            @if (Request.IsAuthenticated)
+            {<span>|</span>
+            @Html.ActionLink("Delete", "Delete", new { id = item.questioner_id })
+            }
         </td>
     </tr>
 }

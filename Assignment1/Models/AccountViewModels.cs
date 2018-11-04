@@ -6,7 +6,7 @@ namespace Assignment1.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "電子メール")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
@@ -42,23 +42,23 @@ namespace Assignment1.Models
     public class ForgotViewModel
     {
         [Required]
-        [Display(Name = "電子メール")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "電子メール")]
+        [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "パスワード")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "このアカウントを記憶する")]
+        [Display(Name = "Remember This Account")]
         public bool RememberMe { get; set; }
     }
 
@@ -66,17 +66,17 @@ namespace Assignment1.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "電子メール")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "{0} の長さは {2} 文字以上である必要があります。", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "パスワード")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "パスワードの確認入力")]
+        [Display(Name = "Password Verification")]
         [Compare("Password", ErrorMessage = "パスワードと確認のパスワードが一致しません。")]
         public string ConfirmPassword { get; set; }
     }
@@ -85,17 +85,17 @@ namespace Assignment1.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "電子メール")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "{0} の長さは {2} 文字以上である必要があります。", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "パスワード")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "パスワードの確認入力")]
+        [Display(Name = "Password Verification")]
         [Compare("Password", ErrorMessage = "パスワードと確認のパスワードが一致しません。")]
         public string ConfirmPassword { get; set; }
 
@@ -106,7 +106,7 @@ namespace Assignment1.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "電子メール")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 }
