@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Assignment1.Models;
+using System.Configuration;
 
 namespace Assignment1
 {
@@ -46,9 +47,9 @@ namespace Assignment1
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // 次の行のコメントを解除して、サード パーティのログイン プロバイダーを使用したログインを有効にします
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: ConfigurationManager.AppSettings["MicrosoftClientId"],
+                clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
@@ -60,8 +61,8 @@ namespace Assignment1
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "606103659568-sglf6fe106s9igbrcaj22gm1rlgg11io.apps.googleusercontent.com",
-                ClientSecret = "EQ8fpIjYTQ66MAf9qY3KB12P"
+                ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientId"]
             });
         }
     }
