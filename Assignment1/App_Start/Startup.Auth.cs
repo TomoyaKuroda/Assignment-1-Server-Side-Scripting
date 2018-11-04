@@ -62,7 +62,7 @@ namespace Assignment1
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
-                ClientSecret = ConfigurationManager.AppSettings["GoogleClientId"]
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
             });
         }
     }
