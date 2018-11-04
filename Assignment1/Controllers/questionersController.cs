@@ -10,16 +10,18 @@ using Assignment1.Models;
 
 namespace Assignment1.Controllers
 {
+    [Authorize]
     public class questionersController : Controller
     {
         private QuestionModel db = new QuestionModel();
 
         // GET: questioners
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.questioner.ToList());
         }
-
+        [AllowAnonymous]
         // GET: questioners/Details/5
         public ActionResult Details(int? id)
         {

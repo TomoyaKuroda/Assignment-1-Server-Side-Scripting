@@ -10,11 +10,13 @@ using Assignment1.Models;
 
 namespace Assignment1.Controllers
 {
+    [Authorize]
     public class questionsController : Controller
     {
         private QuestionModel db = new QuestionModel();
 
         // GET: questions
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var question = db.question.Include(q => q.questioner);
@@ -22,6 +24,7 @@ namespace Assignment1.Controllers
         }
 
         // GET: questions/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)

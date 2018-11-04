@@ -8,8 +8,11 @@
 <h2>Questioners</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+    </p>
 <table class="table">
     <tr>
         <th>
