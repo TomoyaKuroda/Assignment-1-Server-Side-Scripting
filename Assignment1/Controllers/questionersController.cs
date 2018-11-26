@@ -124,31 +124,49 @@ namespace Assignment1.Controllers
             return View("Edit",questioner);
         }
 
-        //// GET: questioners/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    questioner questioner = db.questioner.Find(id);
-        //    if (questioner == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(questioner);
-        //}
+        // GET: questioners/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return View("Error");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //questioner questioner = db.questioner.Find(id);
+            questioner questioner = db.questioners.SingleOrDefault(a=>a.questioner_id==id);
+            if (questioner == null)
+            {
+                //return HttpNotFound();
+                return View("Error");
+            }
+            return View("Delete",questioner);
+        }
 
-        //// POST: questioners/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    questioner questioner = db.questioner.Find(id);
-        //    db.questioner.Remove(questioner);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        // POST: questioners/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int? id)
+        public ActionResult DeleteConfirmed(int? id)
+        {
+            //questioner questioner = db.questioner.Find(id);
+            //db.questioner.Remove(questioner);
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+            questioner questioner = db.questioners.SingleOrDefault(a => a.questioner_id == id);
+
+            if (questioner == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+
+                db.Delete(questioner);
+
+                return RedirectToAction("Index");
+            }
+        }
+    
 
         //protected override void Dispose(bool disposing)
         //{
