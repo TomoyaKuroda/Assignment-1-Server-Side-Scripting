@@ -13,13 +13,27 @@ namespace Assignment1.Controllers
     [Authorize]
     public class questionersController : Controller
     {
-        private QuestionModel db = new QuestionModel();
+        //disable db connection
+        //private QuestionModel db = new QuestionModel();
+
+        private IquestionersMock db;
+            //default constructor
+            public questionersController()
+        {
+            this.db = new EFAquestioners();
+        }
+        //mock constructor
+        public questionersController(IquestionersMock mock)
+        {
+            this.db = mock;
+        }
 
         // GET: questioners
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View(db.questioner.ToList());
+            //return View(db.questioners.ToList());
+            return View("Index", db.questioners.ToList());
         }
         [AllowAnonymous]
         // GET: questioners/Details/5
@@ -27,20 +41,28 @@ namespace Assignment1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
-            questioner questioner = db.questioner.Find(id);
+            //questioner questioner = db.questioner.Find(id);
+            questioner questioner = db.questioners.SingleOrDefault(a=>a.questioner_id==id);
             if (questioner == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return View("Error");
             }
-            return View(questioner);
+            return View("Details",questioner);
         }
 
         // GET: questioners/Create
         public ActionResult Create()
         {
-            return View();
+            //scaffold code
+            
+            ViewBag.first_name = new SelectList(db.questioners, "first_name", "first_name");
+            ViewBag.last_name = new SelectList(db.questioners, "last_name", "last_name");
+
+            return View("Create");
         }
 
         // POST: questioners/Create
@@ -52,12 +74,15 @@ namespace Assignment1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.questioner.Add(questioner);
-                db.SaveChanges();
+
+                //db.questioner.Add(questioner);
+                //db.SaveChanges();
+                db.Save(questioner);
                 return RedirectToAction("Index");
             }
-
-            return View(questioner);
+            ViewBag.first_name = new SelectList(db.questioners, "first_name", "first_name", questioner.first_name);
+            ViewBag.last_name = new SelectList(db.questioners, "last_name", "last_name", questioner.last_name);
+            return View("Create",questioner);
         }
 
         // GET: questioners/Edit/5
@@ -65,14 +90,19 @@ namespace Assignment1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
-            questioner questioner = db.questioner.Find(id);
+            //questioner questioner = db.questioner.Find(id);
+            questioner questioner = db.questioners.SingleOrDefault(a => a.questioner_id == id);
             if (questioner == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return View("Error");
             }
-            return View(questioner);
+            ViewBag.first_name = new SelectList(db.questioners.OrderBy(a => a.first_name), "first_name", "first_name", questioner.first_name);
+            ViewBag.last_name = new SelectList(db.questioners.OrderBy(a => a.last_name), "last_name", "last_name", questioner.last_name);
+            return View("Edit",questioner);
         }
 
         // POST: questioners/Edit/5
@@ -84,46 +114,49 @@ namespace Assignment1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(questioner).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(questioner).State = EntityState.Modified;
+                //db.SaveChanges();
+                db.Save(questioner);
                 return RedirectToAction("Index");
             }
-            return View(questioner);
+            ViewBag.first_name = new SelectList(db.questioners.OrderBy(a => a.first_name), "first_name", "first_name", questioner.first_name);
+            ViewBag.last_name = new SelectList(db.questioners.OrderBy(a => a.last_name), "last_name", "last_name", questioner.last_name);
+            return View("Edit",questioner);
         }
 
-        // GET: questioners/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            questioner questioner = db.questioner.Find(id);
-            if (questioner == null)
-            {
-                return HttpNotFound();
-            }
-            return View(questioner);
-        }
+        //// GET: questioners/Delete/5
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    questioner questioner = db.questioner.Find(id);
+        //    if (questioner == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(questioner);
+        //}
 
-        // POST: questioners/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            questioner questioner = db.questioner.Find(id);
-            db.questioner.Remove(questioner);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: questioners/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    questioner questioner = db.questioner.Find(id);
+        //    db.questioner.Remove(questioner);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

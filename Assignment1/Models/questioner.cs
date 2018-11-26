@@ -19,6 +19,7 @@ namespace Assignment1.Models
         [Display(Name = "Questioner ID")]
         public int questioner_id { get; set; }
 
+
         [Required]
         [StringLength(50)]
         [Display(Name = "First Name")]
