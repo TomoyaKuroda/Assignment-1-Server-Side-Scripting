@@ -17,8 +17,8 @@ namespace Assignment1.Controllers
         //private QuestionModel db = new QuestionModel();
 
         private IquestionersMock db;
-            //default constructor
-            public questionersController()
+        //default constructor
+        public questionersController()
         {
             this.db = new EFAquestioners();
         }
@@ -45,20 +45,20 @@ namespace Assignment1.Controllers
                 return View("Error");
             }
             //questioner questioner = db.questioner.Find(id);
-            questioner questioner = db.questioners.SingleOrDefault(a=>a.questioner_id==id);
+            questioner questioner = db.questioners.SingleOrDefault(a => a.questioner_id == id);
             if (questioner == null)
             {
                 //return HttpNotFound();
                 return View("Error");
             }
-            return View("Details",questioner);
+            return View("Details", questioner);
         }
 
         // GET: questioners/Create
         public ActionResult Create()
         {
             //scaffold code
-            
+
             ViewBag.first_name = new SelectList(db.questioners, "first_name", "first_name");
             ViewBag.last_name = new SelectList(db.questioners, "last_name", "last_name");
 
@@ -82,7 +82,7 @@ namespace Assignment1.Controllers
             }
             ViewBag.first_name = new SelectList(db.questioners, "first_name", "first_name", questioner.first_name);
             ViewBag.last_name = new SelectList(db.questioners, "last_name", "last_name", questioner.last_name);
-            return View("Create",questioner);
+            return View("Create", questioner);
         }
 
         // GET: questioners/Edit/5
@@ -102,7 +102,7 @@ namespace Assignment1.Controllers
             }
             ViewBag.first_name = new SelectList(db.questioners.OrderBy(a => a.first_name), "first_name", "first_name", questioner.first_name);
             ViewBag.last_name = new SelectList(db.questioners.OrderBy(a => a.last_name), "last_name", "last_name", questioner.last_name);
-            return View("Edit",questioner);
+            return View("Edit", questioner);
         }
 
         // POST: questioners/Edit/5
@@ -121,7 +121,7 @@ namespace Assignment1.Controllers
             }
             ViewBag.first_name = new SelectList(db.questioners.OrderBy(a => a.first_name), "first_name", "first_name", questioner.first_name);
             ViewBag.last_name = new SelectList(db.questioners.OrderBy(a => a.last_name), "last_name", "last_name", questioner.last_name);
-            return View("Edit",questioner);
+            return View("Edit", questioner);
         }
 
         // GET: questioners/Delete/5
@@ -133,13 +133,13 @@ namespace Assignment1.Controllers
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //questioner questioner = db.questioner.Find(id);
-            questioner questioner = db.questioners.SingleOrDefault(a=>a.questioner_id==id);
+            questioner questioner = db.questioners.SingleOrDefault(a => a.questioner_id == id);
             if (questioner == null)
             {
                 //return HttpNotFound();
                 return View("Error");
             }
-            return View("Delete",questioner);
+            return View("Delete", questioner);
         }
 
         // POST: questioners/Delete/5
@@ -166,7 +166,7 @@ namespace Assignment1.Controllers
                 return RedirectToAction("Index");
             }
         }
-    
+
 
         //protected override void Dispose(bool disposing)
         //{

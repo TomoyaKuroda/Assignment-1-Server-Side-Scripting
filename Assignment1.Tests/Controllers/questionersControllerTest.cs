@@ -40,10 +40,10 @@ namespace Assignment1.Tests.Controllers
             //questionersController controller = new questionersController();
 
             //act
-            ViewResult result=controller.Index() as ViewResult;
+            ViewResult result = controller.Index() as ViewResult;
 
             //assert
-            Assert.AreEqual("Index",result.ViewName);
+            Assert.AreEqual("Index", result.ViewName);
         }
         [TestMethod]
         public void IndexReturnsQuestioners()
@@ -88,14 +88,14 @@ namespace Assignment1.Tests.Controllers
         }
 
         [TestMethod]
-        public void DetailsValidIdLoadsAlbum()
+        public void DetailsValidIdLoadsQuestioner()
         {
             // act
             questioner result = (questioner)((ViewResult)controller.Details(333)).Model;
 
             // assert
             Assert.AreEqual(questioners[1], result);
-            
+
         }
         #endregion
 
@@ -155,7 +155,7 @@ namespace Assignment1.Tests.Controllers
         }
 
         [TestMethod]
-        public void EditLoadsAlbum()
+        public void EditLoadsQuestioner()
         {
             // act
             questioner actual = (questioner)((ViewResult)controller.Edit(1556)).Model;
@@ -164,7 +164,7 @@ namespace Assignment1.Tests.Controllers
             Assert.AreEqual(questioners[0], actual);
         }
         #endregion
- 
+
 
         // POST: questioners/Create
         #region
@@ -178,7 +178,7 @@ namespace Assignment1.Tests.Controllers
                 first_name = "Named",
                 last_name = "Mick",
                 phone_number = "111-222-3333",
-                email_address="named@gmail.com"
+                email_address = "named@gmail.com"
             };
 
             // act
@@ -322,7 +322,7 @@ namespace Assignment1.Tests.Controllers
         }
 
         [TestMethod]
-        public void EditPostInvalidLoadsAlbum()
+        public void EditPostInvalidLoadsQuestioner()
         {
             // arrange
             questioner invalid = new questioner { questioner_id = 265 };
@@ -371,7 +371,7 @@ namespace Assignment1.Tests.Controllers
         }
 
         [TestMethod]
-        public void DeleteValidIdLoadsAlbum()
+        public void DeleteValidIdLoadsQuestioner()
         {
             // act
             questioner result = (questioner)((ViewResult)controller.Delete(1556)).Model;
